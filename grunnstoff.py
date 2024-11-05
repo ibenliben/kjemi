@@ -6,7 +6,7 @@ class Grunnstoff:
         self.molarMasse = float(molarMasse)
         self.noytron = int(noytron)
         self.periode = int(periode)
-        self.gruppe = int(gruppe)
+        self.gruppe = int(gruppe) if gruppe else 0
         self.fase = fase
         self.type = type
         self.elektronegativitet = float(elektronegativitet) if elektronegativitet else 0
