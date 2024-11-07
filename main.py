@@ -26,6 +26,7 @@ print(periodicTable.keys())
 # forhold mellom nøytroner og atomnummer
 def noytronerProtonerForhold():
     for k, v in periodicTable.items():
+        pass
     pass
 
 
