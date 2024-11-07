@@ -23,14 +23,14 @@ with open(filnavn, encoding="utf-8-sig") as fil:
 print(periodicTable.keys())
 
 
-# forhold mellom nøytroner og atomnummer
+# forhold mellom nøytroner og atomnummer, graf
 def noytronerProtonerForhold():
     for k, v in periodicTable.items():
         pass
     pass
 
 
-
+# molarmasssekalkulator, input example "Na2SO4"
 def molarMasseKalkulator(stoff):
     pass
 
