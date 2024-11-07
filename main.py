@@ -23,3 +23,7 @@ with open(filnavn, encoding="utf-8-sig") as fil:
 print(periodicTable.keys())
 
 
+def molarMasseKalkulator(stoff):
+    pass
+
+
