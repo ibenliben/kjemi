@@ -18,4 +18,8 @@ class Grunnstoff:
     def forholdMellomENogAR(self):
         #TO DO
         pass
+
+    def molFraMasse(self, masse):
+        #TO DO
+        pass
     
