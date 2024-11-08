@@ -1,8 +1,8 @@
 import csv
 from grunnstoff import Grunnstoff
-#import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 
-filnavn = "PeriodicTable.csv"                               # csv-filen
+filnavn = "kjemi/PeriodicTable.csv"                         # csv-filen
 periodicTable = {}                                          # dictionary = {symbol; grunnstoffobjekt}
 
 with open(filnavn, encoding="utf-8-sig") as fil:
@@ -22,12 +22,31 @@ with open(filnavn, encoding="utf-8-sig") as fil:
 
 print(periodicTable.keys())
 
-
 # forhold mellom nøytroner og atomnummer, graf
-def noytronerProtonerForhold():
-    for k, v in periodicTable.items():
-        pass
-    pass
+x_protontall = []
+y_noytrontall = []
+def noytronerProtoner():
+    for key, grunnstoff in periodicTable.items():
+        x_protontall.append(grunnstoff.atomnummer)
+        y_noytrontall.append(grunnstoff.noytron)
+noytronerProtoner()
+
+# lage rett linje for sammenlikning
+x_rett = []
+y_rett = []
+def rettLinje():
+    for i in range(170):
+        x_rett.append(i)
+        y_rett.append(i)
+rettLinje()
+
+plt.plot(x_rett, y_rett, color = "steelblue", label = "Z = N")
+plt.scatter(x_protontall, y_noytrontall, color = "r", s = 10)
+plt.xlabel("Antall protoner $Z$")
+plt.ylabel("Antall nøytroner $N$")
+plt.title("Forholdet mellom protontall og nøytrontall hos stabile kjerner")
+plt.legend(loc = "upper left")
+plt.show()
 
 
 # molarmasssekalkulator, input example "Na2SO4"
