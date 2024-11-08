@@ -23,3 +23,14 @@ class Grunnstoff:
     def molFraMasse(self, m):
         n = m / self.molarMasse
         return f"{m} gram av {self.navn} tilsvarer {n} mol"
+    
+    def molTilPartikler(self, n):
+        avo = 6.022140 * 10**23
+        partikler = n * avo
+
+        # formaterer med 10^ notasjon
+        base, eksponent = f"{partikler:.6e}".split("e")
+        eksponent = int(eksponent)
+
+        return f"{n} mol av {self.navn} tilsvarer {base}*10^{eksponent} partikler"
+    
