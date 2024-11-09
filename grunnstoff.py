@@ -19,7 +19,8 @@ class Grunnstoff:
         #TO DO
         pass
 
-# omregning fra masse(m) til mol(n)
+# omregning fra masse(m) til mol(n) 
+# må fikses så man kan ta input fra bruker
     def molFraMasse(self, m):
         n = m / self.molarMasse
         return f"{m} gram av {self.navn} tilsvarer {n} mol"

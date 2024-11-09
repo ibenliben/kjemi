@@ -17,10 +17,32 @@ with open(filnavn, encoding="utf-8-sig") as fil:
         g = Grunnstoff(*rad)                                #explode list to parameters
         periodicTable[g.symbol] = g
 
-        print(g)
+        #print(g)
         #print(g.navn, g.atomnummer, type(g.elektronegativitet))
 
-print(periodicTable.keys())
+#print(periodicTable.keys())
+
+# meny
+def printMeny():
+    print("*"*25)
+    print("Kjemi".center(20))
+    print("*"*25)
+    print("1. Se graf for forhold mellom nøytroner \n   og protoner hos stabile kjerner")
+    print("")
+    print("2. Omregning fra masse til mol")
+    print("")
+    print("3. Omregning fra mol til antall partikler")
+    print("")
+    print("4. ")
+    print("")
+    print("5. ")
+    print("")
+    print("6. Gå ut")
+    print("*"*25)
+    print("Hva vil du gjøre? (1-6):")
+    print("*"*25)
+printMeny()
+
 
 # forhold mellom nøytroner og atomnummer, graf
 x_protontall = []
@@ -40,13 +62,14 @@ def rettLinje():
         y_rett.append(i)
 rettLinje()
 
-plt.plot(x_rett, y_rett, color = "steelblue", label = "Z = N")
-plt.scatter(x_protontall, y_noytrontall, color = "r", s = 10)
-plt.xlabel("Antall protoner $Z$")
-plt.ylabel("Antall nøytroner $N$")
-plt.title("Forholdet mellom protontall og nøytrontall hos stabile kjerner")
-plt.legend(loc = "upper left")
-plt.show()
+def plotNoytronProtonGraf():
+    plt.plot(x_rett, y_rett, color = "steelblue", label = "Z = N")
+    plt.scatter(x_protontall, y_noytrontall, color = "r", s = 10)
+    plt.xlabel("Antall protoner $Z$")
+    plt.ylabel("Antall nøytroner $N$")
+    plt.title("Forholdet mellom protontall og nøytrontall hos stabile kjerner")
+    plt.legend(loc = "upper left")
+    plt.show()
 
 
 # molarmasssekalkulator, input example "Na2SO4"
