@@ -17,11 +17,6 @@ with open(filnavn, encoding="utf-8-sig") as fil:
         g = Grunnstoff(*rad)                                #explode list to parameters
         periodicTable[g.symbol] = g
 
-        #print(g)
-        #print(g.navn, g.atomnummer, type(g.elektronegativitet))
-
-#print(periodicTable.keys())
-
 # meny
 def printMeny():
     print("*"*25)
