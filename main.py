@@ -34,7 +34,8 @@ def print_meny():
     print("")
     print("6. Gå ut")
     print("*"*25)
-    print("Hva vil du gjøre? (1-6):")
+    global tall
+    tall = int(input("Hva vil du gjøre? (1-6):"))
     print("*"*25)
 print_meny()
 
@@ -74,3 +75,21 @@ def molar_masse_kalkulator(stoff):
     pass
 
 
+# svar på bruker input
+def finn_oppgave():
+    if tall == 1:
+        noytroner_protoner()
+        rett_linje()
+        plot_noytron_proton_graf()
+
+    elif tall == 2:
+        pass
+    elif tall == 3:
+        pass
+    elif tall == 4:
+        pass
+    elif tall == 5:
+        pass
+    elif tall == 6:
+        pass
+finn_oppgave()
