@@ -75,12 +75,21 @@ def plot_noytron_proton_graf():
 """ MOLARMASSEKALKULATOR """
 # input example "Na2SO4"
 def molar_masse_kalkulator(molekyl):
-    print(fra_navn_til_dict(molekyl))
+    stoff = fra_navn_til_dict(molekyl)
+    molar_masse_resultat = 0
+    for key,value in stoff.items():
+        objekt_i_periodicTable = finn_grunnstoff(key)
+        atom_masse = objekt_i_periodicTable.molarMasse
+        print("Stoff:", key, "Atommasse:", atom_masse, "Antall:", value)
+        molar_masse_resultat += atom_masse * float(value)
+
+    return molar_masse_resultat
 
 
 
 
 """ SVAR PÅ BRUKER INPUT """
+# kanskje vi bør flytte denne funksjonen til kjemi_utils? 
 def finn_grunnstoff(symbol):
     return periodicTable.get(symbol)
 
@@ -113,7 +122,7 @@ def finn_oppgave(tall):
 
     elif tall == 5:
         molekyl_fra_bruker = input("Hvilket stoff vil du finne molarmassen til? Skriv med symboler: ")
-        molar_masse_kalkulator(molekyl_fra_bruker)
+        print("Molarmasseresultat: ", molar_masse_kalkulator(molekyl_fra_bruker))
 
 tall = 0
 while tall != 6:
