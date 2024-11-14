@@ -75,13 +75,13 @@ def molar_masse_kalkulator(stoff):
     pass
 
 
-# svar på bruker input
+""" SVAR PÅ BRUKER INPUT """
 def finn_oppgave():
     if tall == 1:
         noytroner_protoner()
         rett_linje()
         plot_noytron_proton_graf()
-
+        print_meny()
     elif tall == 2:
         pass
     elif tall == 3:
@@ -93,3 +93,4 @@ def finn_oppgave():
     elif tall == 6:
         pass
 finn_oppgave()
+
