@@ -1,6 +1,8 @@
 import csv
+import time
 from grunnstoff import Grunnstoff
 import matplotlib.pyplot as plt
+
 
 filnavn = "PeriodicTable.csv"                         # csv-filen
 periodicTable = {}                                    # dictionary = {symbol; grunnstoffobjekt}
@@ -34,7 +36,7 @@ def print_meny():
     print("")
     print("6. Gå ut")
     print("*"*25)
-    tall = int(input("Hva vil du gjøre? (1-6):"))
+    tall = int(input("Hva vil du gjøre? (1-6): "))
     print("*"*25)
     return tall
 
@@ -73,6 +75,8 @@ def plot_noytron_proton_graf():
 def molar_masse_kalkulator(stoff):
     pass
 
+def finn_grunnstoff(symbol):
+    return periodicTable.get(symbol)
 
 """ SVAR PÅ BRUKER INPUT """
 def finn_oppgave(tall):
@@ -82,7 +86,13 @@ def finn_oppgave(tall):
         plot_noytron_proton_graf()
 
     elif tall == 2:
-        pass
+        bruker_symbol = input("Hvilket grunnstoff har du? Skriv symbol: ").capitalize()
+        grunnstoff = finn_grunnstoff(bruker_symbol)
+        if grunnstoff:
+            m_verdi = int(input("Hvor mange gram har du?: "))
+            print(grunnstoff.mol_fra_masse(m_verdi))
+        else:
+            print("Grunnstoffet ble ikke funnet.")
     elif tall == 3:
         pass
     elif tall == 4:
@@ -95,7 +105,8 @@ while tall != 6:
     tall = print_meny()
     if tall != 6:
         finn_oppgave(tall)
+        time.sleep(3)
     else:
-        print("Avslutter programmet")
+        print("Avslutter programmet...")
         break 
     
