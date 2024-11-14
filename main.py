@@ -70,7 +70,7 @@ def plot_noytron_proton_graf():
 
 
 # molarmasssekalkulator, input example "Na2SO4"
-def molarMasseKalkulator(stoff):
+def molar_masse_kalkulator(stoff):
     pass
 
 
