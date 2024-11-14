@@ -1,6 +1,7 @@
 import csv
 import time
 from grunnstoff import Grunnstoff
+from kjemi_utils import fra_navn_til_dict
 import matplotlib.pyplot as plt
 
 
@@ -71,9 +72,10 @@ def plot_noytron_proton_graf():
 # plot_noytron_proton_graf()
 
 
-# molarmasssekalkulator, input example "Na2SO4"
-def molar_masse_kalkulator(stoff):
-    pass
+""" MOLARMASSEKALKULATOR """
+# input example "Na2SO4"
+def molar_masse_kalkulator(molekyl):
+    print(fra_navn_til_dict(molekyl))
 
 
 
@@ -108,8 +110,10 @@ def finn_oppgave(tall):
             
     elif tall == 4:
         pass
+
     elif tall == 5:
-        pass
+        molekyl_fra_bruker = input("Hvilket stoff vil du finne molarmassen til? Skriv med symboler: ")
+        molar_masse_kalkulator(molekyl_fra_bruker)
 
 tall = 0
 while tall != 6:
