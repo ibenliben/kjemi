@@ -23,7 +23,7 @@ class Grunnstoff:
 # må fikses så man kan ta input fra bruker
     def mol_fra_masse(self, m):
         n = m / self.molarMasse
-        return f"{m} gram av {self.navn} tilsvarer {n} mol"
+        return f"{m} gram av {self.navn} tilsvarer {n:.3f} mol"
     
     def mol_til_partikler(self, n):
         avo = 6.022140 * 10**23

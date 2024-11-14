@@ -75,10 +75,13 @@ def plot_noytron_proton_graf():
 def molar_masse_kalkulator(stoff):
     pass
 
+
+
+
+""" SVAR PÅ BRUKER INPUT """
 def finn_grunnstoff(symbol):
     return periodicTable.get(symbol)
 
-""" SVAR PÅ BRUKER INPUT """
 def finn_oppgave(tall):
     if tall == 1:
         noytroner_protoner()
@@ -93,8 +96,16 @@ def finn_oppgave(tall):
             print(grunnstoff.mol_fra_masse(m_verdi))
         else:
             print("Grunnstoffet ble ikke funnet.")
+
     elif tall == 3:
-        pass
+        bruker_symbol = input("Hvilket grunnstoff har du? Skriv symbol: ").capitalize()
+        grunnstoff = finn_grunnstoff(bruker_symbol)
+        if grunnstoff:
+            mol = int(input("Hvor mange mol har du?: "))
+            print(grunnstoff.mol_til_partikler(mol))
+        else:
+            print("Grunnstoffet ble ikke funnet.")
+            
     elif tall == 4:
         pass
     elif tall == 5:
@@ -105,8 +116,10 @@ while tall != 6:
     tall = print_meny()
     if tall != 6:
         finn_oppgave(tall)
+        print("")
         time.sleep(3)
     else:
         print("Avslutter programmet...")
+        print("")
         break 
     
