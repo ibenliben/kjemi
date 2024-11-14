@@ -2,7 +2,7 @@ import csv
 from grunnstoff import Grunnstoff
 import matplotlib.pyplot as plt
 
-filnavn = "kjemi/PeriodicTable.csv"                         # csv-filen
+filnavn = "PeriodicTable.csv"                         # csv-filen
 periodicTable = {}                                          # dictionary = {symbol; grunnstoffobjekt}
 
 with open(filnavn, encoding="utf-8-sig") as fil:
