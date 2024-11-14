@@ -3,7 +3,7 @@ from grunnstoff import Grunnstoff
 import matplotlib.pyplot as plt
 
 filnavn = "PeriodicTable.csv"                         # csv-filen
-periodicTable = {}                                          # dictionary = {symbol; grunnstoffobjekt}
+periodicTable = {}                                    # dictionary = {symbol; grunnstoffobjekt}
 
 with open(filnavn, encoding="utf-8-sig") as fil:
     filinnhold = csv.reader(fil, delimiter=";")
@@ -34,10 +34,9 @@ def print_meny():
     print("")
     print("6. Gå ut")
     print("*"*25)
-    global tall
     tall = int(input("Hva vil du gjøre? (1-6):"))
     print("*"*25)
-print_meny()
+    return tall
 
 
 """ GRAFPLOT """
@@ -76,12 +75,12 @@ def molar_masse_kalkulator(stoff):
 
 
 """ SVAR PÅ BRUKER INPUT """
-def finn_oppgave():
+def finn_oppgave(tall):
     if tall == 1:
         noytroner_protoner()
         rett_linje()
         plot_noytron_proton_graf()
-        print_meny()
+
     elif tall == 2:
         pass
     elif tall == 3:
@@ -90,7 +89,13 @@ def finn_oppgave():
         pass
     elif tall == 5:
         pass
-    elif tall == 6:
-        pass
-finn_oppgave()
 
+tall = 0
+while tall != 6:
+    tall = print_meny()
+    if tall != 6:
+        finn_oppgave(tall)
+    else:
+        print("Avslutter programmet")
+        break 
+    
