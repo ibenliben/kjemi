@@ -17,11 +17,6 @@ with open(filnavn, encoding="utf-8-sig") as fil:
         g = Grunnstoff(*rad)                                #explode list to parameters
         periodicTable[g.symbol] = g
 
-        #print(g)
-        #print(g.navn, g.atomnummer, type(g.elektronegativitet))
-
-#print(periodicTable.keys())
-
 # meny
 def printMeny():
     print("*"*25)
@@ -44,6 +39,7 @@ def printMeny():
 printMeny()
 
 
+""" GRAFPLOT """
 # forhold mellom nøytroner og atomnummer, graf
 x_protontall = []
 y_noytrontall = []
@@ -71,6 +67,7 @@ def plotNoytronProtonGraf():
     plt.legend(loc = "upper left")
     plt.show()
 # plotNoytronProtonGraf()
+
 
 # molarmasssekalkulator, input example "Na2SO4"
 def molarMasseKalkulator(stoff):
