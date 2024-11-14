@@ -44,6 +44,7 @@ def printMeny():
 printMeny()
 
 
+""" GRAFPLOT """
 # forhold mellom nøytroner og atomnummer, graf
 x_protontall = []
 y_noytrontall = []
@@ -70,6 +71,7 @@ def plotNoytronProtonGraf():
     plt.title("Forholdet mellom protontall og nøytrontall hos stabile kjerner")
     plt.legend(loc = "upper left")
     plt.show()
+
 
 
 # molarmasssekalkulator, input example "Na2SO4"
