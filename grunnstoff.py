@@ -15,17 +15,17 @@ class Grunnstoff:
     def __str__(self): 
         return f"Grunnstoffet {self.navn} har atomnummer {self.atomnummer} og symbol {self.symbol}."
     
-    def forholdMellomENogAR(self):
+    def forhold_mellomm_en_ar(self):
         #TO DO
         pass
 
 # omregning fra masse(m) til mol(n) 
 # må fikses så man kan ta input fra bruker
-    def molFraMasse(self, m):
+    def mol_fra_masse(self, m):
         n = m / self.molarMasse
         return f"{m} gram av {self.navn} tilsvarer {n} mol"
     
-    def molTilPartikler(self, n):
+    def mol_til_partikler(self, n):
         avo = 6.022140 * 10**23
         partikler = n * avo
 

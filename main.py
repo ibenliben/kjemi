@@ -18,7 +18,7 @@ with open(filnavn, encoding="utf-8-sig") as fil:
         periodicTable[g.symbol] = g
 
 # meny
-def printMeny():
+def print_meny():
     print("*"*25)
     print("Kjemi".center(20))
     print("*"*25)
@@ -36,29 +36,29 @@ def printMeny():
     print("*"*25)
     print("Hva vil du gjøre? (1-6):")
     print("*"*25)
-printMeny()
+print_meny()
 
 
 """ GRAFPLOT """
 # forhold mellom nøytroner og atomnummer, graf
 x_protontall = []
 y_noytrontall = []
-def noytronerProtoner():
+def noytroner_protoner():
     for key, grunnstoff in periodicTable.items():
         x_protontall.append(grunnstoff.atomnummer)
         y_noytrontall.append(grunnstoff.noytron)
-# noytronerProtoner()
+# noytroner_protoner()
 
 # lage rett linje for sammenlikning
 x_rett = []
 y_rett = []
-def rettLinje():
+def rett_linje():
     for i in range(170):
         x_rett.append(i)
         y_rett.append(i)
-# rettLinje()
+# rett_linje()
 
-def plotNoytronProtonGraf():
+def plot_noytron_proton_graf():
     plt.plot(x_rett, y_rett, color = "steelblue", label = "Z = N")
     plt.scatter(x_protontall, y_noytrontall, color = "r", s = 10)
     plt.xlabel("Antall protoner $Z$")
@@ -66,7 +66,7 @@ def plotNoytronProtonGraf():
     plt.title("Forholdet mellom protontall og nøytrontall hos stabile kjerner")
     plt.legend(loc = "upper left")
     plt.show()
-# plotNoytronProtonGraf()
+# plot_noytron_proton_graf()
 
 
 # molarmasssekalkulator, input example "Na2SO4"
