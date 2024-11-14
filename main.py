@@ -2,7 +2,7 @@ import csv
 from grunnstoff import Grunnstoff
 import matplotlib.pyplot as plt
 
-filnavn = "kjemi/PeriodicTable.csv"                         # csv-filen
+filnavn = "PeriodicTable.csv"                         # csv-filen
 periodicTable = {}                                          # dictionary = {symbol; grunnstoffobjekt}
 
 with open(filnavn, encoding="utf-8-sig") as fil:
@@ -33,9 +33,9 @@ def printMeny():
     print("")
     print("3. Omregning fra mol til antall partikler")
     print("")
-    print("4. ")
+    print("4. Se forhold mellom elektronegativitet og atomradius")
     print("")
-    print("5. ")
+    print("5. Finn molarmasse for molekyl")
     print("")
     print("6. Gå ut")
     print("*"*25)
@@ -51,7 +51,7 @@ def noytronerProtoner():
     for key, grunnstoff in periodicTable.items():
         x_protontall.append(grunnstoff.atomnummer)
         y_noytrontall.append(grunnstoff.noytron)
-noytronerProtoner()
+# noytronerProtoner()
 
 # lage rett linje for sammenlikning
 x_rett = []
@@ -60,7 +60,7 @@ def rettLinje():
     for i in range(170):
         x_rett.append(i)
         y_rett.append(i)
-rettLinje()
+# rettLinje()
 
 def plotNoytronProtonGraf():
     plt.plot(x_rett, y_rett, color = "steelblue", label = "Z = N")
@@ -70,7 +70,7 @@ def plotNoytronProtonGraf():
     plt.title("Forholdet mellom protontall og nøytrontall hos stabile kjerner")
     plt.legend(loc = "upper left")
     plt.show()
-
+# plotNoytronProtonGraf()
 
 # molarmasssekalkulator, input example "Na2SO4"
 def molarMasseKalkulator(stoff):
