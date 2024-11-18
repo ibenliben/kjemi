@@ -118,7 +118,13 @@ def finn_oppgave(tall):
             print("Grunnstoffet ble ikke funnet.")
             
     elif tall == 4:
-        pass
+        bruker_symbol = input("Hvilket grunnstoff har du? Skriv symbol: ").capitalize()
+        grunnstoff = finn_grunnstoff(bruker_symbol)
+        if grunnstoff: 
+            print(grunnstoff.forhold_mellomm_en_ar())
+        else: 
+            print("Grunnstoffet ble ikke funnet.")
+
 
     elif tall == 5:
         molekyl_fra_bruker = input("Hvilket stoff vil du finne molarmassen til? Skriv med symboler: ")
