@@ -17,7 +17,7 @@ class Grunnstoff:
     
     def forhold_mellomm_en_ar(self):
         if self.elektronegativitet and self.atomradius:
-            return f"Forholdet mellom elektronegativitet og atomradius til {self.navn} er: {self.elektronegativitet / self.atomradius}"
+            return f"Forholdet mellom elektronegativitet og atomradius til {self.navn} er: {(self.elektronegativitet / self.atomradius):.3f}"
         
         else:
             return f"Vi har ikke informasjon om {self.navn} sin elektronegativitet og/eller atomradius"
