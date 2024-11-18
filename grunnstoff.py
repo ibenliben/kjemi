@@ -18,6 +18,9 @@ class Grunnstoff:
     def forhold_mellomm_en_ar(self):
         if self.elektronegativitet and self.atomradius:
             return f"Forholdet mellom elektronegativitet og atomradius til {self.navn} er: {self.elektronegativitet / self.atomradius}"
+        
+        else:
+            return f"Vi har ikke informasjon om {self.navn} sin elektronegativitet og/eller atomradius"
 
 # omregning fra masse(m) til mol(n) 
 # må fikses så man kan ta input fra bruker
