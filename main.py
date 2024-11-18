@@ -3,6 +3,7 @@ import time
 from grunnstoff import Grunnstoff
 from kjemi_utils import fra_navn_til_dict
 import matplotlib.pyplot as plt
+import numpy as np
 
 
 filnavn = "PeriodicTable.csv"                         # csv-filen
@@ -54,7 +55,6 @@ def noytroner_protoner():
     for key, grunnstoff in periodicTable.items():
         x_protontall.append(grunnstoff.atomnummer)
         y_noytrontall.append(grunnstoff.noytron)
-# noytroner_protoner()
 
 # lage rett linje for sammenlikning
 x_rett = []
@@ -63,9 +63,6 @@ def rett_linje():
     for i in range(170):
         x_rett.append(i)
         y_rett.append(i)
-# rett_linje()
-
-# kokepunkt for hydrokarboner
 
 def plot_noytron_proton_graf():
     plt.plot(x_rett, y_rett, color = "steelblue", label = "Z = N")
@@ -75,7 +72,19 @@ def plot_noytron_proton_graf():
     plt.title("Forholdet mellom protontall og nøytrontall hos stabile kjerner")
     plt.legend(loc = "upper left")
     plt.show()
-# plot_noytron_proton_graf()
+
+# kokepunkt for hydrokarboner
+C_atomer = [1, 2, 3, 4, 5, 6, 7]
+kokepunkt = np.array([-162, -89, -42, 0, 36, 69, 98])
+offset = -180
+
+def plot_hydrokarboner():
+    plt.bar(C_atomer, kokepunkt-offset, color = "lightblue", bottom = offset)
+    plt.xlabel("Antall C-atomer i alkaner")
+    plt.ylabel("Kokepunkt (°C)")
+    plt.axhline(y = 20, color = "red", label = "Romtemperatur (20°C)")
+    plt.legend()
+    plt.show()
 
 
 """ MOLARMASSEKALKULATOR """
@@ -170,7 +179,7 @@ def finn_oppgave(tall):
         plot_noytron_proton_graf()
 
     elif tall == 7:
-        pass
+        plot_hydrokarboner()
 
 tall = 0
 while tall != 8:
