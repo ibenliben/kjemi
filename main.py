@@ -35,9 +35,11 @@ def print_meny():
     print("")
     print("5. Finn molarmasse for molekyl")
     print("")
-    print("6. Gå ut")
+    print("6. Bindingsbonanza")
+    print("")
+    print("7. Gå ut")
     print("*"*25)
-    tall = int(input("Hva vil du gjøre? (1-6): "))
+    tall = int(input("Hva vil du gjøre? (1-7): "))
     print("*"*25)
     return tall
 
@@ -85,7 +87,30 @@ def molar_masse_kalkulator(molekyl):
 
     return molar_masse_resultat
 
+""" BEREGNING AV BINDINGER """
+def finn_binding(stoff1, stoff2):
+    # metallbinding
+    if stoff1.type == "Metal" and stoff2.type == "Metal":
+        if stoff1.type == stoff2.type:
+            print(f"{stoff1.navn} er metall, og flere danner metallbinding.")
+        else:
+            print(f"{stoff1.navn} og {stoff2.navn} er begge metaller og danner metallbinding.")
 
+    # kovalent binding
+    elif stoff1.type == "Nonmetal" and stoff2.type == "Nonmetal":
+        if stoff1.type == stoff2.type:
+            print(f"{stoff1.navn} er ikke-metall, og to stykker danner kovalent binding.")
+        else:
+            print(f"{stoff1.navn} og {stoff2.navn} er begge ikke-metaller og danner kovalent binding.")
+
+    elif stoff1.type == "Metalloid" or stoff2.type == "Metalloid":
+        print("Et av stoffene er et halv-metall, binding er ukjent.")
+    #ionebinding
+    else:
+        if stoff1.type == "Nonmetal" and stoff2.type == "Metal":
+            print(f"{stoff1.navn} er ikke-metall og {stoff2.navn} er metall og de danner ionebinding.")
+        else:
+            print(f"{stoff1.navn} er metall og {stoff2.navn} er ikke-metall og de danner ionebinding.")
 
 
 """ SVAR PÅ BRUKER INPUT """
@@ -124,10 +149,20 @@ def finn_oppgave(tall):
         molekyl_fra_bruker = input("Hvilket stoff vil du finne molarmassen til? Skriv med symboler: ")
         print("Molarmasseresultat: ", molar_masse_kalkulator(molekyl_fra_bruker))
 
+    elif tall == 6:
+        bruker_symbol1 = input("Hva er det første stoffet? Skriv symbol: ").capitalize()
+        bruker_symbol2 = input("Hva er det andre stoffet? Skriv symbol: ").capitalize()
+        grunnstoff1 = finn_grunnstoff(bruker_symbol1)
+        grunnstoff2 = finn_grunnstoff(bruker_symbol2)
+        if grunnstoff1 and grunnstoff2:
+            finn_binding(grunnstoff1, grunnstoff2)
+        else:
+            print("Grunnstoffet ble ikke funnet.")
+
 tall = 0
-while tall != 6:
+while tall != 7:
     tall = print_meny()
-    if tall != 6:
+    if tall != 7:
         finn_oppgave(tall)
         print("")
         time.sleep(3)
@@ -135,4 +170,4 @@ while tall != 6:
         print("Avslutter programmet...")
         print("")
         break 
-    
+
