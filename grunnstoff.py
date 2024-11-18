@@ -16,8 +16,11 @@ class Grunnstoff:
         return f"Grunnstoffet {self.navn} har atomnummer {self.atomnummer} og symbol {self.symbol}."
     
     def forhold_mellomm_en_ar(self):
-        #TO DO
-        pass
+        if self.elektronegativitet and self.atomradius:
+            return f"Forholdet mellom elektronegativitet og atomradius til {self.navn} er: {self.elektronegativitet / self.atomradius}"
+        
+        else:
+            return f"Vi har ikke informasjon om {self.navn} sin elektronegativitet og/eller atomradius"
 
 # omregning fra masse(m) til mol(n) 
 # må fikses så man kan ta input fra bruker
@@ -34,4 +37,3 @@ class Grunnstoff:
         eksponent = int(eksponent)
 
         return f"{n} mol av {self.navn} tilsvarer {base}*10^{eksponent} partikler"
-    
