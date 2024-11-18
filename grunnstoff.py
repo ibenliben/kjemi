@@ -37,4 +37,3 @@ class Grunnstoff:
         eksponent = int(eksponent)
 
         return f"{n} mol av {self.navn} tilsvarer {base}*10^{eksponent} partikler"
-    
