@@ -25,21 +25,23 @@ def print_meny():
     print("*"*25)
     print("Kjemi".center(20))
     print("*"*25)
-    print("1. Se graf for forhold mellom nøytroner \n   og protoner hos stabile kjerner")
+    print("1. Omregning fra masse til mol")
     print("")
-    print("2. Omregning fra masse til mol")
+    print("2. Omregning fra mol til antall partikler")
     print("")
-    print("3. Omregning fra mol til antall partikler")
+    print("3. Finn molarmasse for molekyl")
     print("")
-    print("4. Se forhold mellom elektronegativitet og atomradius")
+    print("4. Bindingsbonanza")
     print("")
-    print("5. Finn molarmasse for molekyl")
+    print("5. Se forhold mellom elektronegativitet og atomradius")
     print("")
-    print("6. Bindingsbonanza")
+    print("6. Se graf for forhold mellom nøytroner \n   og protoner hos stabile kjerner")
     print("")
-    print("7. Gå ut")
+    print("7. Se bar-graf for kokepunkt for hydrokarboner")
+    print("")
+    print("8. Gå ut")
     print("*"*25)
-    tall = int(input("Hva vil du gjøre? (1-7): "))
+    tall = int(input("Hva vil du gjøre? (1-8): "))
     print("*"*25)
     return tall
 
@@ -62,6 +64,8 @@ def rett_linje():
         x_rett.append(i)
         y_rett.append(i)
 # rett_linje()
+
+# kokepunkt for hydrokarboner
 
 def plot_noytron_proton_graf():
     plt.plot(x_rett, y_rett, color = "steelblue", label = "Z = N")
@@ -119,13 +123,7 @@ def finn_grunnstoff(symbol):
     return periodicTable.get(symbol)
 
 def finn_oppgave(tall):
-    if tall == 1:
-        noytroner_protoner()
-        rett_linje()
-        plot_noytron_proton_graf()
-        print("Denne grafen illustrerer et mønster for kjernefysisk stabilitet. I lette atomkjerner er forholdet mellom antall protoner og nøytroner omtrent 1:1, noe som betyr at det er like mange protoner som nøytroner. Etter hvert som atomnummeret øker, blir forholdet skjevere, og de stabile kjernene har flere nøytroner enn protoner. Dette skyldes at de ekstra nøytronene bidrar til å balansere den økende frastøtningen mellom protonene.")
-
-    elif tall == 2:
+    if tall == 1:        
         bruker_symbol = input("Hvilket grunnstoff har du? Skriv symbol: ").capitalize()
         grunnstoff = finn_grunnstoff(bruker_symbol)
         if grunnstoff:
@@ -134,7 +132,7 @@ def finn_oppgave(tall):
         else:
             print("Grunnstoffet ble ikke funnet.")
 
-    elif tall == 3:
+    elif tall == 2:
         bruker_symbol = input("Hvilket grunnstoff har du? Skriv symbol: ").capitalize()
         grunnstoff = finn_grunnstoff(bruker_symbol)
         if grunnstoff:
@@ -142,21 +140,12 @@ def finn_oppgave(tall):
             print(grunnstoff.mol_til_partikler(mol))
         else:
             print("Grunnstoffet ble ikke funnet.")
-            
-    elif tall == 4:
-        bruker_symbol = input("Hvilket grunnstoff har du? Skriv symbol: ").capitalize()
-        grunnstoff = finn_grunnstoff(bruker_symbol)
-        if grunnstoff: 
-            print(grunnstoff.forhold_mellomm_en_ar())
-        else: 
-            print("Grunnstoffet ble ikke funnet.")
 
-
-    elif tall == 5:
+    elif tall == 3:
         molekyl_fra_bruker = input("Hvilket stoff vil du finne molarmassen til? Skriv med symboler: ")
         print("Molarmasseresultat: ", molar_masse_kalkulator(molekyl_fra_bruker))
-
-    elif tall == 6:
+            
+    elif tall == 4:
         bruker_symbol1 = input("Hva er det første stoffet? Skriv symbol: ").capitalize()
         bruker_symbol2 = input("Hva er det andre stoffet? Skriv symbol: ").capitalize()
         grunnstoff1 = finn_grunnstoff(bruker_symbol1)
@@ -166,10 +155,27 @@ def finn_oppgave(tall):
         else:
             print("Grunnstoffet ble ikke funnet.")
 
+
+    elif tall == 5:
+        bruker_symbol = input("Hvilket grunnstoff har du? Skriv symbol: ").capitalize()
+        grunnstoff = finn_grunnstoff(bruker_symbol)
+        if grunnstoff: 
+            print(grunnstoff.forhold_mellomm_en_ar())
+        else: 
+            print("Grunnstoffet ble ikke funnet.")
+
+    elif tall == 6:
+        noytroner_protoner()
+        rett_linje()
+        plot_noytron_proton_graf()
+
+    elif tall == 7:
+        pass
+
 tall = 0
-while tall != 7:
+while tall != 8:
     tall = print_meny()
-    if tall != 7:
+    if tall != 8:
         finn_oppgave(tall)
         print("")
         time.sleep(3)
