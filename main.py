@@ -168,6 +168,7 @@ def finn_oppgave(tall):
         noytroner_protoner()
         rett_linje()
         plot_noytron_proton_graf()
+        print("Denne grafen illustrerer et mønster for kjernefysisk stabilitet. I lette atomkjerner er forholdet mellom antall protoner og nøytroner omtrent 1:1, noe som betyr at det er like mange protoner som nøytroner. Etter hvert som atomnummeret øker, blir forholdet skjevere, og de stabile kjernene har flere nøytroner enn protoner. Dette skyldes at de ekstra nøytronene bidrar til å balansere den økende frastøtningen mellom protonene.")
 
     elif tall == 7:
         pass
