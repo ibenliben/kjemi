@@ -14,7 +14,6 @@ with open(filnavn, encoding="utf-8-sig") as fil:
     
     # hoppe over overskrifter
     overskrifter = next(filinnhold)
-    print(overskrifter)
 
     for rad in filinnhold:
         # lage objekt, gi navn 
