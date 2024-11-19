@@ -73,7 +73,7 @@ def plot_noytron_proton_graf():
     plt.legend(loc = "upper left")
     plt.show()
 
-# kokepunkt for hydrokarboner
+# kokepunkt for hydrokarboner graf
 C_atomer = [1, 2, 3, 4, 5, 6, 7]
 kokepunkt = np.array([-162, -89, -42, 0, 36, 69, 98])
 offset = -180
@@ -82,10 +82,16 @@ def plot_hydrokarboner():
     plt.bar(C_atomer, kokepunkt-offset, color = "lightblue", bottom = offset)
     plt.xlabel("Antall C-atomer i alkaner")
     plt.ylabel("Kokepunkt (°C)")
-    plt.axhline(y = 20, color = "red", label = "Romtemperatur (20°C)")
-    plt.legend()
-    plt.show()
+    plt.axhline(y = 20, color = "red")
+    plt.text(0.5, 22, "Romtemperatur (20°C)", color = "red", ha = "left", va = "bottom")
 
+    y_max = max(kokepunkt) + 40
+    plt.ylim(offset, y_max)
+
+    for x, y in zip(C_atomer, kokepunkt):
+        plt.text(x, y + 5, f"{y}°C", ha = "center", va = "bottom")
+
+    plt.show()
 
 """ MOLARMASSEKALKULATOR """
 # input example "Na2SO4"
