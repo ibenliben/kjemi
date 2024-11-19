@@ -187,6 +187,7 @@ def finn_oppgave(tall):
 
     elif tall == 7:
         plot_hydrokarboner()
+        print("Dette er en graf som illustrerer kokepunktet til alkaner. Vi ser at dette illustrerer en tydelig trend der for antall karbonatomer i et alkan, jo høyere kokepunkt. Dette er fordi de totale kreftene mellom alkan-molekylene øker når molekylet blir større, altså når det blir satt inn flere C-atomer.")
 
 tall = 0
 while tall != 8:
