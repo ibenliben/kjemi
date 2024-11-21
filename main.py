@@ -1,24 +1,5 @@
-import csv
 import time
-from grunnstoff import Grunnstoff
-from kjemi_utils import fra_navn_til_dict
-import matplotlib.pyplot as plt
-import numpy as np
-from plot import plot_noytron_proton_graf, plot_hydrokarboner
-
-filnavn = "PeriodicTable.csv"                         # csv-filen
-periodicTable = {}                                    # dictionary = {symbol; grunnstoffobjekt}
-
-with open(filnavn, encoding="utf-8-sig") as fil:
-    filinnhold = csv.reader(fil, delimiter=";")
-    
-    # hoppe over overskrifter
-    overskrifter = next(filinnhold)
-
-    for rad in filinnhold:
-        # lage objekt, gi navn 
-        g = Grunnstoff(*rad)                                #explode list to parameters
-        periodicTable[g.symbol] = g
+from kjemi_utils import plot_noytron_proton_graf, plot_hydrokarboner, finn_grunnstoff, molar_masse_kalkulator, finn_binding
 
 # meny
 def print_meny():
@@ -46,50 +27,8 @@ def print_meny():
     return tall
 
 
-""" MOLARMASSEKALKULATOR """
-# input example "Na2SO4"
-def molar_masse_kalkulator(molekyl):
-    stoff = fra_navn_til_dict(molekyl)
-    molar_masse_resultat = 0
-    for key,value in stoff.items():
-        objekt_i_periodicTable = finn_grunnstoff(key)
-        atom_masse = objekt_i_periodicTable.molarMasse
-        print("Stoff:", key, "Atommasse:", atom_masse, "Antall:", value)
-        molar_masse_resultat += atom_masse * float(value)
-
-    return molar_masse_resultat
-
-""" BEREGNING AV BINDINGER """
-def finn_binding(stoff1, stoff2):
-    # metallbinding
-    if stoff1.type == "Metal" and stoff2.type == "Metal":
-        if stoff1.navn == stoff2.navn:
-            print(f"{stoff1.navn} er metall, og flere danner metallbinding.")
-        else:
-            print(f"{stoff1.navn} og {stoff2.navn} er begge metaller og danner metallbinding.")
-
-    # kovalent binding
-    elif stoff1.type == "Nonmetal" and stoff2.type == "Nonmetal":
-        if stoff1.navn == stoff2.navn:
-            print(f"{stoff1.navn} er ikke-metall, og to stykker danner kovalent binding.")
-        else:
-            print(f"{stoff1.navn} og {stoff2.navn} er begge ikke-metaller og danner kovalent binding.")
-
-    elif stoff1.type == "Metalloid" or stoff2.type == "Metalloid":
-        print("Et av stoffene er et halv-metall, binding er ukjent.")
-    #ionebinding
-    else:
-        if stoff1.type == "Nonmetal" and stoff2.type == "Metal":
-            print(f"{stoff1.navn} er ikke-metall og {stoff2.navn} er metall og de danner ionebinding.")
-        else:
-            print(f"{stoff1.navn} er metall og {stoff2.navn} er ikke-metall og de danner ionebinding.")
-
-
 """ SVAR PÅ BRUKER INPUT """
 # kanskje vi bør flytte denne funksjonen til kjemi_utils? 
-def finn_grunnstoff(symbol):
-    return periodicTable.get(symbol)
-
 def finn_oppgave(tall):
     if tall == 1:        
         bruker_symbol = input("Hvilket grunnstoff har du? Skriv symbol: ").capitalize()
