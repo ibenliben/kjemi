@@ -1,5 +1,23 @@
 class Grunnstoff:
+    """
+    Klasse for å lage grunnstoff-objekter.
+    Parametre:
+        navn (str): Grunnstoffets navn
+        atomnummer (int): Grunnstoffets nummer i periodesystemet
+        symbol (str): Grunnstoffets forkortelse. f.eks "Na" for "Natrium"
+        molarMasse (float): Atommassen til grunnstoffet
+        noytron (int): Antall nøytroner i det vanligste isotopet av grunnstoffet
+        periode (int): Raden i periodesystemet vi finner grunnstoffet
+        gruppe = 0 (int): Kolonnen til grunnstoffet i periodesystemet
+        fase (str): Grunnstoffets fase (g, l, s) i romtemperatur
+        type (str): Metall, halv-metall eller ikke-metall
+        elektronegativitet = 0 (float): Grunnstoffets evne til å trekke til seg elektroner 
+        atomradius = 0 (float): Atomradiusen til grunnstoffet
+    """
     def __init__(self, navn, atomnummer, symbol, molarMasse, noytron, periode, gruppe, fase, type, elektronegativitet, atomradius):
+        """
+        Konstruktør
+        """
         self.navn = navn
         self.atomnummer = int(atomnummer)
         self.symbol = symbol
@@ -13,9 +31,15 @@ class Grunnstoff:
         self.atomradius = float(atomradius) if atomradius else 0
 
     def __str__(self): 
+        """
+        Returnerer en lesbar strengrepresentasjon av grunnstoffet.
+        """
         return f"Grunnstoffet {self.navn} har atomnummer {self.atomnummer} og symbol {self.symbol}."
     
     def forhold_mellomm_en_ar(self):
+        """
+        Returnerer forholdet mellom elektronegativiteten og atomradiusen til grunnstoffet.
+        """
         if self.elektronegativitet and self.atomradius:
             return f"Forholdet mellom elektronegativitet og atomradius til {self.navn} er: {(self.elektronegativitet / self.atomradius):.3f}"
         
@@ -24,10 +48,20 @@ class Grunnstoff:
 
 # omregning fra masse(m) til mol(n) 
     def mol_fra_masse(self, m):
+        """
+        Returnerer stoffmengden av grunnstoffet ved input masse.
+        Parametre: 
+            m (float): Massen(i gram) du vil omregne til stoffmengde.
+        """
         n = m / self.molarMasse
         return f"{m} gram av {self.navn} tilsvarer {n:.3f} mol"
     
     def mol_til_partikler(self, n):
+        """
+        Returnerer antall partikler av grunnstoffet ved input stoffmengde
+        Parametre: 
+            n (float): Stoffmengden(i mol) du vil omregne til antall partikler. 
+        """
         avo = 6.022140 * 10**23
         partikler = n * avo
 
