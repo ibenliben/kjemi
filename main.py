@@ -3,6 +3,11 @@ from kjemi_utils import plot_noytron_proton_graf, plot_hydrokarboner, finn_grunn
 
 # meny
 def print_meny():
+    """
+    Viser en meny funksjoner og returnerer brukerens valg.
+    Brukeren blir bedt om å velge et alternativ ved å skrive inn et 
+    tall mellom 1 og 8.
+    """
     print("*"*25)
     print("Kjemi".center(20))
     print("*"*25)
@@ -28,8 +33,12 @@ def print_meny():
 
 
 """ SVAR PÅ BRUKER INPUT """
-# kanskje vi bør flytte denne funksjonen til kjemi_utils? 
 def finn_oppgave(tall):
+    """
+    Utfører en oppgave basert på brukerens valg. 
+    Parametre: 
+        tall (int): Tall mellom 1-8 som representerer brukerens valg fra menyen
+    """
     if tall == 1:        
         bruker_symbol = input("Hvilket grunnstoff har du? Skriv symbol: ").capitalize()
         grunnstoff = finn_grunnstoff(bruker_symbol)
