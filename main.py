@@ -109,14 +109,14 @@ def molar_masse_kalkulator(molekyl):
 def finn_binding(stoff1, stoff2):
     # metallbinding
     if stoff1.type == "Metal" and stoff2.type == "Metal":
-        if stoff1.type == stoff2.type:
+        if stoff1.navn == stoff2.navn:
             print(f"{stoff1.navn} er metall, og flere danner metallbinding.")
         else:
             print(f"{stoff1.navn} og {stoff2.navn} er begge metaller og danner metallbinding.")
 
     # kovalent binding
     elif stoff1.type == "Nonmetal" and stoff2.type == "Nonmetal":
-        if stoff1.type == stoff2.type:
+        if stoff1.navn == stoff2.navn:
             print(f"{stoff1.navn} er ikke-metall, og to stykker danner kovalent binding.")
         else:
             print(f"{stoff1.navn} og {stoff2.navn} er begge ikke-metaller og danner kovalent binding.")

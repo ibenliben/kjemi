@@ -23,7 +23,6 @@ class Grunnstoff:
             return f"Vi har ikke informasjon om {self.navn} sin elektronegativitet og/eller atomradius"
 
 # omregning fra masse(m) til mol(n) 
-# må fikses så man kan ta input fra bruker
     def mol_fra_masse(self, m):
         n = m / self.molarMasse
         return f"{m} gram av {self.navn} tilsvarer {n:.3f} mol"
