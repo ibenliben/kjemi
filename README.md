@@ -14,5 +14,12 @@ slik som atomnummer, fase eller elektronegativitet og andre parametere.
 
 # Funksjoner
 ## Beregninger:
+Omregning fra masse til mol: En kalkulator som tar input masse og gir det den tilsvarende stoffmengde verdien for det samme grunnstoffet. 
+
+Omregning fra mol til antall partikler: En kalkulator som tar input stoffmengde og returnerer antall partikler denne mengden tilsvarer for det samme grunnstoffet.
+
+Molarmassekalkulator: En kalkulator som tar et molekyl som input og returnerer den samlede molarmasseverdien.
+
+Bindingsbonanza: En funksjon som tar to grunnstoff som input og returnerer hvilken type binding de to danner.
 
 ## Visualisering:
