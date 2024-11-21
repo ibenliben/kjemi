@@ -23,35 +23,6 @@ def finn_grunnstoff(symbol):
     return periodicTable.get(symbol)
 
 
-def fra_navn_til_dict(molekyl):
-    dict = {}
-    stoff = ""
-    
-    for indeks, bokstav in enumerate(molekyl):                  # enumerate gir tilgang til både indeks og bokstav
-        if bokstav.isalpha():
-            if bokstav.isupper():
-                if stoff:
-                    dict[stoff] = antall
-                stoff = bokstav
-                antall = 1
-            else: 
-                stoff += bokstav
-
-        elif bokstav.isdigit():
-            if indeks > 0 and molekyl[indeks-1].isdigit():      # håndterer tall med flere siffer
-                antall = antall * 10 + int(bokstav)  
-            else:
-                antall = int(bokstav)
-
-        else:
-            return "ugyldig stoff."
-    
-    if stoff:
-        dict[stoff] = antall
-    
-    return dict
-
-
 """ GRAFPLOT """
 # forhold mellom nøytroner og atomnummer, graf
 def plot_noytron_proton_graf():
@@ -99,7 +70,61 @@ def plot_hydrokarboner():
 
 """ MOLARMASSEKALKULATOR """
 # input example "Na2SO4"
+def fra_navn_til_dict(molekyl):
+    """
+    Konverterer en kjemisk formel til en ordbok som representerer grunnstoffene og antallet av dem.
+
+    Parametre:
+        molekyl (str): Den kjemiske formelen for et molekyl.
+
+    Returns:
+        dict: En ordbok med grunnstoff som nøkler og antall som verdier.
+        str: Returnerer "ugyldig stoff." hvis formelen inneholder ugyldige tegn.
+
+    Eksempel:
+        >>> fra_navn_til_dict("Na2SO4")
+        {'Na': 2, 'S': 1, 'O': 4}
+    """
+    dict = {}
+    stoff = ""
+    for indeks, bokstav in enumerate(molekyl):                  # enumerate gir tilgang til både indeks og bokstav
+        if bokstav.isalpha():
+            if bokstav.isupper():
+                if stoff:
+                    dict[stoff] = antall
+                stoff = bokstav
+                antall = 1
+            else: 
+                stoff += bokstav
+        elif bokstav.isdigit():
+            if indeks > 0 and molekyl[indeks-1].isdigit():      # håndterer tall med flere siffer
+                antall = antall * 10 + int(bokstav)  
+            else:
+                antall = int(bokstav)
+        else:
+            return "ugyldig stoff."
+    if stoff:
+        dict[stoff] = antall
+
+    return dict
+
 def molar_masse_kalkulator(molekyl):
+    """
+    Beregner molarmassen til et molekyl basert på den kjemiske formelen.
+
+    Parametre:
+        molekyl (str): Den kjemiske formelen for et molekyl.
+
+    Returns:
+        Den totale molarmassen til molekylet i g/mol. (float)
+
+    Eksempel:
+        >>> molar_masse_kalkulator("Na2SO4")
+        Stoff: Na Atommasse: 22.99 Antall: 2
+        Stoff: S Atommasse: 32.06 Antall: 1
+        Stoff: O Atommasse: 16.0 Antall: 4
+        142.04
+    """
     stoff = fra_navn_til_dict(molekyl)
     molar_masse_resultat = 0
     for key,value in stoff.items():
@@ -113,6 +138,17 @@ def molar_masse_kalkulator(molekyl):
 
 """ BEREGNING AV BINDINGER """
 def finn_binding(stoff1, stoff2):
+    """
+    Beregner bindingen mellom to stoffer basert på typen.
+
+    Parametre:
+        stoff1 (str): Det kjemiske symbolet for et grunnstoff
+        stoff2 (str): Det kjemiske symbolet for det andre grunnstoffet
+
+    Eksempel:
+        >>> finn_binding("Na", "Cl")
+        Natrium er ikke-metall og Chlorine er metall og de danner ionebinding.
+    """
     # metallbinding
     if stoff1.type == "Metal" and stoff2.type == "Metal":
         if stoff1.navn == stoff2.navn:
