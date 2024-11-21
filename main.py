@@ -4,7 +4,7 @@ from grunnstoff import Grunnstoff
 from kjemi_utils import fra_navn_til_dict
 import matplotlib.pyplot as plt
 import numpy as np
-
+from plot import plot_noytron_proton_graf, plot_hydrokarboner
 
 filnavn = "PeriodicTable.csv"                         # csv-filen
 periodicTable = {}                                    # dictionary = {symbol; grunnstoffobjekt}
@@ -45,52 +45,6 @@ def print_meny():
     print("*"*25)
     return tall
 
-
-""" GRAFPLOT """
-# forhold mellom nøytroner og atomnummer, graf
-x_protontall = []
-y_noytrontall = []
-def noytroner_protoner():
-    for key, grunnstoff in periodicTable.items():
-        x_protontall.append(grunnstoff.atomnummer)
-        y_noytrontall.append(grunnstoff.noytron)
-
-# lage rett linje for sammenlikning
-x_rett = []
-y_rett = []
-def rett_linje():
-    for i in range(170):
-        x_rett.append(i)
-        y_rett.append(i)
-
-def plot_noytron_proton_graf():
-    plt.plot(x_rett, y_rett, color = "steelblue", label = "Z = N")
-    plt.scatter(x_protontall, y_noytrontall, color = "r", s = 10)
-    plt.xlabel("Antall protoner $Z$")
-    plt.ylabel("Antall nøytroner $N$")
-    plt.title("Forholdet mellom protontall og nøytrontall hos stabile kjerner")
-    plt.legend(loc = "upper left")
-    plt.show()
-
-# kokepunkt for hydrokarboner graf
-C_atomer = [1, 2, 3, 4, 5, 6, 7]
-kokepunkt = np.array([-162, -89, -42, 0, 36, 69, 98])
-offset = -180
-
-def plot_hydrokarboner():
-    plt.bar(C_atomer, kokepunkt-offset, color = "lightblue", bottom = offset)
-    plt.xlabel("Antall C-atomer i alkaner")
-    plt.ylabel("Kokepunkt (°C)")
-    plt.axhline(y = 20, color = "red")
-    plt.text(0.5, 22, "Romtemperatur (20°C)", color = "red", ha = "left", va = "bottom")
-
-    y_max = max(kokepunkt) + 40
-    plt.ylim(offset, y_max)
-
-    for x, y in zip(C_atomer, kokepunkt):
-        plt.text(x, y + 5, f"{y}°C", ha = "center", va = "bottom")
-
-    plt.show()
 
 """ MOLARMASSEKALKULATOR """
 # input example "Na2SO4"
@@ -179,8 +133,6 @@ def finn_oppgave(tall):
             print("Grunnstoffet ble ikke funnet.")
 
     elif tall == 6:
-        noytroner_protoner()
-        rett_linje()
         plot_noytron_proton_graf()
         print("Denne grafen illustrerer et mønster for kjernefysisk stabilitet. I lette atomkjerner er forholdet mellom antall protoner og nøytroner omtrent 1:1, noe som betyr at det er like mange protoner som nøytroner. Etter hvert som atomnummeret øker, blir forholdet skjevere, og de stabile kjernene har flere nøytroner enn protoner. Dette skyldes at de ekstra nøytronene bidrar til å balansere den økende frastøtningen mellom protonene.")
 
