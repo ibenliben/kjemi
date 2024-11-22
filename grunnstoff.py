@@ -5,7 +5,7 @@ class Grunnstoff:
         navn (str): Grunnstoffets navn
         atomnummer (int): Grunnstoffets nummer i periodesystemet
         symbol (str): Grunnstoffets forkortelse. f.eks "Na" for "Natrium"
-        molarMasse (float): Atommassen til grunnstoffet
+        molar_masse (float): Atommassen til grunnstoffet
         noytron (int): Antall nøytroner i det vanligste isotopet av grunnstoffet
         periode (int): Raden i periodesystemet vi finner grunnstoffet
         gruppe = 0 (int): Kolonnen til grunnstoffet i periodesystemet
@@ -14,14 +14,14 @@ class Grunnstoff:
         elektronegativitet = 0 (float): Grunnstoffets evne til å trekke til seg elektroner 
         atomradius = 0 (float): Atomradiusen til grunnstoffet
     """
-    def __init__(self, navn, atomnummer, symbol, molarMasse, noytron, periode, gruppe, fase, type, elektronegativitet, atomradius):
+    def __init__(self, navn, atomnummer, symbol, molar_masse, noytron, periode, gruppe, fase, type, elektronegativitet, atomradius):
         """
         Konstruktør
         """
         self.navn = navn
         self.atomnummer = int(atomnummer)
         self.symbol = symbol
-        self.molarMasse = float(molarMasse)
+        self.molar_masse = float(molar_masse)
         self.noytron = int(noytron)
         self.periode = int(periode)
         self.gruppe = int(gruppe) if gruppe else 0
@@ -36,7 +36,7 @@ class Grunnstoff:
         """
         return f"Grunnstoffet {self.navn} har atomnummer {self.atomnummer} og symbol {self.symbol}."
     
-    def forhold_mellomm_en_ar(self):
+    def forhold_mellom_en_ar(self):
         """
         Returnerer forholdet mellom elektronegativiteten og atomradiusen til grunnstoffet.
         """
@@ -53,7 +53,7 @@ class Grunnstoff:
         Parametre: 
             m (float): Massen(i gram) du vil omregne til stoffmengde.
         """
-        n = m / self.molarMasse
+        n = m / self.molar_masse
         return f"{m} gram av {self.navn} tilsvarer {n:.3f} mol"
     
     def mol_til_partikler(self, n):

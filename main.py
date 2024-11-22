@@ -76,7 +76,7 @@ def finn_oppgave(tall):
         bruker_symbol = input("Hvilket grunnstoff har du? Skriv symbol: ").capitalize()
         grunnstoff = finn_grunnstoff(bruker_symbol)
         if grunnstoff: 
-            print(grunnstoff.forhold_mellomm_en_ar())
+            print(grunnstoff.forhold_mellom_en_ar())
         else: 
             print("Grunnstoffet ble ikke funnet.")
 
@@ -99,4 +99,3 @@ while tall != 8:
         print("Avslutter programmet...")
         print("")
         break 
-

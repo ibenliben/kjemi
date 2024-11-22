@@ -5,7 +5,7 @@ import numpy as np
 
 
 filnavn = "PeriodicTable.csv"                         # csv-filen
-periodicTable = {}                                    # dictionary = {symbol; grunnstoffobjekt}
+periodic_table = {}                                    # dictionary = {symbol; grunnstoffobjekt}
 
 with open(filnavn, encoding="utf-8-sig") as fil:
     filinnhold = csv.reader(fil, delimiter=";")
@@ -16,7 +16,7 @@ with open(filnavn, encoding="utf-8-sig") as fil:
     for rad in filinnhold:
         # lage objekt, gi navn 
         g = Grunnstoff(*rad)                                #explode list to parameters
-        periodicTable[g.symbol] = g
+        periodic_table[g.symbol] = g
 
 
 def finn_grunnstoff(symbol):
@@ -26,7 +26,7 @@ def finn_grunnstoff(symbol):
     Parametre:
         symbol (str): Det kjemiske symbolet for et molekyl.
     """
-    return periodicTable.get(symbol)
+    return periodic_table.get(symbol)
 
 
 """ GRAFPLOT """
@@ -34,7 +34,7 @@ def finn_grunnstoff(symbol):
 def plot_noytron_proton_graf():
     x_protontall = []
     y_noytrontall = []
-    for key, grunnstoff in periodicTable.items():
+    for key, grunnstoff in periodic_table.items():
         x_protontall.append(grunnstoff.atomnummer)
         y_noytrontall.append(grunnstoff.noytron)
 
@@ -133,8 +133,8 @@ def molar_masse_kalkulator(molekyl):
     stoff = fra_navn_til_dict(molekyl)
     molar_masse_resultat = 0
     for key,value in stoff.items():
-        objekt_i_periodicTable = finn_grunnstoff(key)
-        atom_masse = objekt_i_periodicTable.molarMasse
+        objekt_i_periodic_table = finn_grunnstoff(key)
+        atom_masse = objekt_i_periodic_table.molar_masse
         print("Stoff:", key, "Atommasse:", atom_masse, "Antall:", value)
         molar_masse_resultat += atom_masse * float(value)
 
