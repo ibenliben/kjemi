@@ -69,7 +69,6 @@ def plot_hydrokarboner():
 
 
 """ MOLARMASSEKALKULATOR """
-# input example "Na2SO4"
 def fra_navn_til_dict(molekyl):
     """
     Konverterer en kjemisk formel til en ordbok som representerer grunnstoffene og antallet av dem.
