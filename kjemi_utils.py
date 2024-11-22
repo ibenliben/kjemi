@@ -20,6 +20,12 @@ with open(filnavn, encoding="utf-8-sig") as fil:
 
 
 def finn_grunnstoff(symbol):
+    """
+    Returnerer objektet til grunnstoffet korresponderende med symbolet brukeren skriver inn.
+
+    Parametre:
+        symbol (str): Det kjemiske symbolet for et molekyl.
+    """
     return periodicTable.get(symbol)
 
 
