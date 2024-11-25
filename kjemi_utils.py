@@ -32,6 +32,11 @@ def finn_grunnstoff(symbol):
 """ GRAFPLOT """
 # forhold mellom nøytroner og atomnummer, graf
 def plot_noytron_proton_graf():
+    """
+    Lager lister for nøytron- og protontall og plotter for graf.
+
+    Returnerer graf.
+    """
     x_protontall = []
     y_noytrontall = []
     for key, grunnstoff in periodic_table.items():
@@ -55,6 +60,11 @@ def plot_noytron_proton_graf():
 
 # kokepunkt for hydrokarboner graf
 def plot_hydrokarboner():
+    """
+    Lager lister for antall karbonatomer i alkan og alkanets kokepunkt og plotter for graf.
+
+    Returnerer graf.
+    """
     C_atomer = [1, 2, 3, 4, 5, 6, 7]
     kokepunkt = np.array([-162, -89, -42, 0, 36, 69, 98])
     offset = -180
@@ -82,7 +92,7 @@ def fra_navn_til_dict(molekyl):
     Parametre:
         molekyl (str): Den kjemiske formelen for et molekyl.
 
-    Returns:
+    Returnerer:
         dict: En ordbok med grunnstoff som nøkler og antall som verdier.
         str: Returnerer "ugyldig stoff." hvis formelen inneholder ugyldige tegn.
 
